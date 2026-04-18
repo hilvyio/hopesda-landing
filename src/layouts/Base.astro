@@ -82,6 +82,7 @@ const jsonLd = {
 
 		<meta name="theme-color" content="#0a0f1a" />
 
+		<link rel="preconnect" href="https://traffic.hilvy.io" crossorigin />
 		<link rel="preconnect" href="https://cdn.prod.website-files.com" crossorigin />
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -96,6 +97,21 @@ const jsonLd = {
 			type="application/ld+json"
 			set:html={JSON.stringify(jsonLd)}
 		/>
+
+		<!-- Plausible (self-hosted proxy) — site-wide -->
+		<script
+			is:inline
+			defer
+			data-domain="hopesda.uk"
+			src="https://traffic.hilvy.io/js/script.file-downloads.hash.outbound-links.pageview-props.tagged-events.js"
+		></script>
+		<script is:inline>
+			window.plausible =
+				window.plausible ||
+				function () {
+					;(window.plausible.q = window.plausible.q || []).push(arguments)
+				}
+		</script>
 	</head>
 	<body>
 		<slot />
