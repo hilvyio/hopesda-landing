@@ -1,0 +1,29 @@
+{
+	"name": "hopesda-landing",
+	"type": "module",
+	"version": "0.1.0",
+	"private": true,
+	"engines": {
+		"node": ">=22.12.0"
+	},
+	"scripts": {
+		"dev": "astro dev",
+		"start": "astro dev",
+		"build": "rm -rf node_modules/.vite node_modules/.cache .astro dist && astro build",
+		"preview": "astro preview",
+		"astro": "astro"
+	},
+	"dependencies": {
+		"@astrojs/sitemap": "^3.7.2",
+		"@astrojs/vercel": "^10.0.4",
+		"@tailwindcss/vite": "^4.2.2",
+		"astro": "^6.1.7",
+		"tailwindcss": "^4.2.2"
+	},
+	"devDependencies": {
+		"typescript": "^6.0.3"
+	},
+	"pnpm": {
+		"onlyBuiltDependencies": ["esbuild", "sharp"]
+	}
+}

@@ -1,0 +1,193 @@
+@import 'tailwindcss';
+
+@theme {
+	/* Brand tokens — Hope Community SDA */
+	--color-brand-navy: #0b1220;
+	--color-brand-ink: #0a0f1a;
+	--color-brand-sky: #7fb3ff;
+	--color-brand-sky-soft: #bcd6ff;
+	--color-brand-gold: #e9c46a;
+	--color-brand-cream: #f8f4ea;
+	--color-brand-muted: #a7b1c2;
+	--color-brand-accent: #4f8cff;
+
+	/* Webflow site uses Montserrat; display serif pairs cleanly for headings */
+	--font-display:
+		'Cormorant Garamond', 'Libre Baskerville', ui-serif, Georgia, 'Times New Roman',
+		serif;
+	--font-sans:
+		'Montserrat', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+	--radius-pill: 9999px;
+}
+
+@layer base {
+	:root {
+		color-scheme: dark;
+	}
+
+	html {
+		scroll-behavior: smooth;
+		-webkit-font-smoothing: antialiased;
+		text-rendering: optimizeLegibility;
+	}
+
+	body {
+		font-family: var(--font-sans);
+		background: var(--color-brand-ink);
+		color: var(--color-brand-cream);
+		padding-left: env(safe-area-inset-left, 0px);
+		padding-right: env(safe-area-inset-right, 0px);
+		-webkit-tap-highlight-color: rgba(127, 179, 255, 0.15);
+	}
+
+	::selection {
+		background: var(--color-brand-sky);
+		color: var(--color-brand-ink);
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		html {
+			scroll-behavior: auto;
+		}
+
+		.animate-fade-up,
+		.animate-fade {
+			animation: none !important;
+			opacity: 1 !important;
+			transform: none !important;
+		}
+
+		.animate-ping {
+			animation: none !important;
+		}
+	}
+}
+
+@layer utilities {
+	.font-display {
+		font-family: var(--font-display);
+		font-feature-settings: 'liga', 'kern';
+		letter-spacing: -0.01em;
+	}
+
+	.bg-grain {
+		background-image: radial-gradient(
+			rgba(255, 255, 255, 0.04) 1px,
+			transparent 1px
+		);
+		background-size: 3px 3px;
+	}
+
+	.glass {
+		background: rgba(12, 18, 32, 0.55);
+		backdrop-filter: blur(14px) saturate(140%);
+		-webkit-backdrop-filter: blur(14px) saturate(140%);
+		border: 1px solid rgba(255, 255, 255, 0.08);
+	}
+
+	.text-balance {
+		text-wrap: balance;
+	}
+
+	.text-pretty {
+		text-wrap: pretty;
+	}
+
+	/* Notched phones + home indicator */
+	.pb-safe {
+		padding-bottom: max(2rem, env(safe-area-inset-bottom, 0px));
+	}
+
+	.pt-safe {
+		padding-top: max(0.5rem, env(safe-area-inset-top, 0px));
+	}
+
+	/* iOS-friendly tap targets (min 44×44 CSS px) */
+	.touch-target {
+		min-height: 2.75rem;
+		min-width: 2.75rem;
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		touch-action: manipulation;
+	}
+}
+
+/* Subtle hero video vignette */
+.hero-vignette::after {
+	content: '';
+	position: absolute;
+	inset: 0;
+	background:
+		radial-gradient(
+			ellipse at center,
+			transparent 0%,
+			rgba(10, 15, 26, 0.55) 70%,
+			rgba(10, 15, 26, 0.9) 100%
+		),
+		linear-gradient(
+			180deg,
+			rgba(10, 15, 26, 0.35) 0%,
+			rgba(10, 15, 26, 0.55) 60%,
+			rgba(10, 15, 26, 0.95) 100%
+		);
+	pointer-events: none;
+}
+
+/* Animations */
+@keyframes fade-up {
+	from {
+		opacity: 0;
+		transform: translateY(16px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+@keyframes fade {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+@keyframes shimmer {
+	0% {
+		background-position: -200% 0;
+	}
+	100% {
+		background-position: 200% 0;
+	}
+}
+
+.animate-fade-up {
+	animation: fade-up 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.animate-fade {
+	animation: fade 1.2s ease-out both;
+}
+
+.delay-100 {
+	animation-delay: 0.1s;
+}
+.delay-200 {
+	animation-delay: 0.2s;
+}
+.delay-300 {
+	animation-delay: 0.3s;
+}
+.delay-400 {
+	animation-delay: 0.4s;
+}
+.delay-500 {
+	animation-delay: 0.5s;
+}
+.delay-700 {
+	animation-delay: 0.7s;
+}
