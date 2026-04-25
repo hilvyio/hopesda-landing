@@ -1,0 +1,188 @@
+---
+import Base from '../layouts/Base.astro'
+import { SITE } from '../lib/const'
+import { ASSETS } from '../lib/const'
+
+const pageTitle = `Events — ${SITE.short}`
+const pageDescription =
+	'Upcoming special events and regular weekly services at Hope Community SDA Church, Beckenham.'
+
+const upcomingEvents = [
+	{
+		date: '18 July',
+		title: 'International Day',
+		description: 'A celebration of our diverse community from around the world.',
+	},
+	{
+		date: '6 September',
+		title: 'Summer BBQ',
+		description: 'Join us for fellowship, food, and fun at our annual summer gathering.',
+	},
+	{
+		date: '12 December',
+		title: 'Christmas Programme',
+		description: 'A special service celebrating the birth of Jesus Christ.',
+	},
+]
+
+const regularEvents = [
+	{
+		day: 'Saturday',
+		items: [
+			{ time: '10:00', label: 'Bible Study Hour' },
+			{ time: '11:15', label: 'Main Service' },
+		],
+	},
+	{
+		day: 'Wednesday',
+		items: [
+			{ time: '19:30', label: 'Prayer Meeting' },
+		],
+	},
+]
+---
+
+<Base
+	title={pageTitle}
+	description={pageDescription}
+	canonicalUrl={`${SITE.url}/events`}
+>
+	<div class="relative min-h-[100dvh] min-h-[100svh] overflow-x-clip">
+		<!-- Subtle background grain -->
+		<div class="bg-grain pointer-events-none fixed inset-0 opacity-40" aria-hidden="true"></div>
+
+		<!-- Header -->
+		<header class="relative z-10 pt-safe">
+			<div class="mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 pt-4 sm:gap-4 sm:px-8 sm:pt-8">
+				<a
+					href="/"
+					class="animate-fade flex min-w-0 flex-1 items-center gap-2.5 sm:min-w-0 sm:flex-none sm:gap-3"
+					aria-label={SITE.name}
+				>
+					<img
+						src={ASSETS.logo}
+						alt=""
+						width="40"
+						height="40"
+						class="h-10 w-10 shrink-0 rounded-full bg-white/5 object-contain p-1 ring-1 ring-white/15 sm:h-11 sm:w-11"
+						loading="eager"
+					/>
+					<span class="truncate text-left text-sm font-semibold leading-tight tracking-tight text-brand-cream sm:text-lg">
+						Hope SDA Church
+					</span>
+				</a>
+				<nav class="animate-fade flex shrink-0 items-center gap-2 sm:gap-3">
+					<a
+						href="/"
+						class="hidden items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-2.5 text-sm font-medium text-brand-cream/90 backdrop-blur transition hover:bg-white/10 sm:inline-flex"
+					>
+						← Home
+					</a>
+					<a
+						href={`mailto:${SITE.contactEmail}`}
+						class="touch-target inline-flex rounded-full border border-white/15 bg-white/5 text-brand-cream/90 backdrop-blur transition active:bg-white/15 hover:bg-white/10 sm:hidden"
+						aria-label="Email us"
+					>
+						<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+							<path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+							<polyline points="22,6 12,13 2,6" />
+						</svg>
+					</a>
+				</nav>
+			</div>
+		</header>
+
+		<!-- Page content -->
+		<main class="relative z-10 mx-auto max-w-4xl px-4 pb-20 pt-12 sm:px-8 sm:pt-20">
+
+			<!-- Page heading -->
+			<div class="animate-fade-up mb-12 text-center sm:mb-16">
+				<p class="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-brand-sky/80">
+					Hope Community SDA
+				</p>
+				<h1 class="font-display text-4xl font-semibold text-brand-cream sm:text-5xl lg:text-6xl">
+					Events
+				</h1>
+				<p class="mx-auto mt-4 max-w-md text-sm leading-relaxed text-brand-muted">
+					Join us at {SITE.address.line1}, {SITE.address.line2}.
+				</p>
+			</div>
+
+			<!-- Upcoming Events -->
+			<section class="animate-fade-up mb-14" style="animation-delay: 0.1s">
+				<h2 class="mb-6 text-xs font-semibold uppercase tracking-[0.2em] text-brand-gold">
+					Upcoming Events
+				</h2>
+				<ul class="space-y-4">
+					{upcomingEvents.map((event) => (
+						<li>
+							<div class="glass rounded-2xl p-5 sm:p-6 transition hover:border-white/15">
+								<div class="flex items-start gap-4">
+									<div class="flex min-w-[4.5rem] flex-col items-center rounded-xl border border-brand-gold/20 bg-brand-gold/10 px-3 py-2 text-center">
+										<span class="font-display text-xl font-semibold leading-none text-brand-gold">
+											{event.date.split(' ')[0]}
+										</span>
+										<span class="mt-0.5 text-[0.65rem] font-medium uppercase tracking-wider text-brand-gold/70">
+											{event.date.split(' ')[1]}
+										</span>
+									</div>
+									<div class="min-w-0 flex-1">
+										<h3 class="text-base font-semibold text-brand-cream sm:text-lg">
+											{event.title}
+										</h3>
+										<p class="mt-1 text-sm leading-relaxed text-brand-muted">
+											{event.description}
+										</p>
+									</div>
+								</div>
+							</div>
+						</li>
+					))}
+				</ul>
+			</section>
+
+			<!-- Regular Events -->
+			<section class="animate-fade-up" style="animation-delay: 0.2s">
+				<h2 class="mb-6 text-xs font-semibold uppercase tracking-[0.2em] text-brand-sky">
+					Weekly Services
+				</h2>
+				<div class="grid gap-4 sm:grid-cols-2">
+					{regularEvents.map((group) => (
+						<div class="glass rounded-2xl p-5 sm:p-6">
+							<h3 class="mb-4 text-sm font-semibold uppercase tracking-widest text-brand-cream/70">
+								{group.day}s
+							</h3>
+							<ul class="space-y-3">
+								{group.items.map((item) => (
+									<li class="flex items-center gap-3">
+										<span class="inline-flex shrink-0 items-center rounded-lg border border-brand-sky/20 bg-brand-sky/10 px-2.5 py-1 font-mono text-xs font-medium text-brand-sky">
+											{item.time}
+										</span>
+										<span class="text-sm text-brand-cream/90">{item.label}</span>
+									</li>
+								))}
+							</ul>
+						</div>
+					))}
+				</div>
+			</section>
+
+			<!-- Address footer -->
+			<div class="animate-fade-up mt-14 text-center" style="animation-delay: 0.3s">
+				<a
+					href={SITE.address.mapsUrl}
+					target="_blank"
+					rel="noopener noreferrer"
+					class="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-5 py-3 text-sm text-brand-cream/80 backdrop-blur transition hover:bg-white/10"
+				>
+					<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+						<path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+						<circle cx="12" cy="10" r="3" />
+					</svg>
+					{SITE.address.line1}, {SITE.address.line2}, {SITE.address.postcode}
+				</a>
+			</div>
+
+		</main>
+	</div>
+</Base>
