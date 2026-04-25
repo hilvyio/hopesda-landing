@@ -1,7 +1,6 @@
 ---
 import Base from '../layouts/Base.astro'
-import { SITE } from '../lib/const'
-import { ASSETS } from '../lib/const'
+import { SITE, ASSETS } from '../lib/const'
 
 const pageTitle = `Events — ${SITE.short}`
 const pageDescription =
@@ -47,7 +46,7 @@ const regularEvents = [
 	description={pageDescription}
 	canonicalUrl={`${SITE.url}/events`}
 >
-	<div class="relative min-h-[100dvh] min-h-[100svh] overflow-x-clip">
+	<div class="relative flex min-h-[100dvh] min-h-[100svh] flex-col overflow-x-clip">
 		<!-- Subtle background grain -->
 		<div class="bg-grain pointer-events-none fixed inset-0 opacity-40" aria-hidden="true"></div>
 
@@ -93,7 +92,7 @@ const regularEvents = [
 		</header>
 
 		<!-- Page content -->
-		<main class="relative z-10 mx-auto max-w-4xl px-4 pb-20 pt-12 sm:px-8 sm:pt-20">
+		<main class="relative z-10 mx-auto w-full max-w-4xl flex-1 px-4 pb-16 pt-12 sm:px-8 sm:pt-20">
 
 			<!-- Page heading -->
 			<div class="animate-fade-up mb-12 text-center sm:mb-16">
@@ -167,22 +166,47 @@ const regularEvents = [
 				</div>
 			</section>
 
-			<!-- Address footer -->
-			<div class="animate-fade-up mt-14 text-center" style="animation-delay: 0.3s">
+		</main>
+
+		<!-- Footer -->
+		<footer class="relative z-10 mx-auto flex w-full max-w-7xl flex-col items-center justify-between gap-5 px-4 pb-safe pt-2 text-center sm:flex-row sm:items-center sm:gap-4 sm:px-8 sm:pt-0 sm:text-left">
+			<p class="max-w-md text-xs leading-relaxed text-brand-muted sm:max-w-none">
+				© {new Date().getFullYear()} Hope Community SDA Church · A family church in Beckenham, Bromley.
+			</p>
+			<div class="flex items-center gap-4" aria-label="Follow us">
 				<a
-					href={SITE.address.mapsUrl}
+					href={SITE.social.facebook}
 					target="_blank"
-					rel="noopener noreferrer"
-					class="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-5 py-3 text-sm text-brand-cream/80 backdrop-blur transition hover:bg-white/10"
+					rel="noreferrer"
+					aria-label="Facebook"
+					class="touch-target grid h-11 w-11 place-items-center rounded-full border border-white/15 bg-white/5 text-brand-cream/80 transition active:bg-white/10 hover:border-white/30 hover:text-brand-cream"
+				>
+					<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13 22v-8h3l1-4h-4V7.5c0-1.1.4-2 2-2h2V2.2C16.6 2.1 15.3 2 14 2c-3 0-5 1.8-5 5.1V10H6v4h3v8h4z" /></svg>
+				</a>
+				<a
+					href={SITE.social.instagram}
+					target="_blank"
+					rel="noreferrer"
+					aria-label="Instagram"
+					class="touch-target grid h-11 w-11 place-items-center rounded-full border border-white/15 bg-white/5 text-brand-cream/80 transition active:bg-white/10 hover:border-white/30 hover:text-brand-cream"
 				>
 					<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-						<path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
-						<circle cx="12" cy="10" r="3" />
+						<rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+						<path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+						<line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
 					</svg>
-					{SITE.address.line1}, {SITE.address.line2}, {SITE.address.postcode}
+				</a>
+				<a
+					href={SITE.social.youtube}
+					target="_blank"
+					rel="noreferrer"
+					aria-label="YouTube — weekly live streams"
+					class="touch-target grid h-11 w-11 place-items-center rounded-full border border-white/15 bg-white/5 text-brand-cream/80 transition active:bg-white/10 hover:border-red-500/40 hover:text-red-200"
+				>
+					<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23 7.3s-.2-1.6-.9-2.3c-.8-.9-1.8-.9-2.2-1C16.9 3.8 12 3.8 12 3.8s-4.9 0-7.9.2c-.4.1-1.4.1-2.2 1C1.2 5.7 1 7.3 1 7.3S.8 9.2.8 11.1v1.8C.8 14.8 1 16.7 1 16.7s.2 1.6.9 2.3c.8.9 1.9.9 2.4 1 1.7.2 7.7.2 7.7.2s4.9 0 7.9-.2c.4-.1 1.4-.1 2.2-1 .7-.7.9-2.3.9-2.3s.2-1.9.2-3.8v-1.8c0-1.9-.2-3.8-.2-3.8zM9.8 14.9V8.5l6.2 3.2-6.2 3.2z" /></svg>
 				</a>
 			</div>
+		</footer>
 
-		</main>
 	</div>
 </Base>
