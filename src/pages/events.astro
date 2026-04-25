@@ -62,7 +62,7 @@ const regularEvents = [
 						alt=""
 						width="40"
 						height="40"
-						class="h-10 w-10 shrink-0 rounded-full bg-black/5 object-contain p-1 ring-1 ring-black/10 sm:h-11 sm:w-11"
+						class="h-10 w-10 shrink-0 rounded-full bg-gray-800 object-contain p-1 ring-1 ring-gray-700 sm:h-11 sm:w-11"
 						loading="eager"
 					/>
 					<span class="truncate text-left text-sm font-semibold leading-tight tracking-tight text-gray-900 sm:text-base">
@@ -85,7 +85,7 @@ const regularEvents = [
 
 			<!-- Page heading -->
 			<div class="mb-10 text-center sm:mb-14">
-				<p class="mb-2 text-xs font-semibold uppercase tracking-[0.2em] text-[#8a6a2a]">
+				<p class="mb-2 text-xs font-semibold uppercase tracking-[0.2em] text-[#6b4f1a]">
 					Hope Community SDA
 				</p>
 				<h1 class="font-display text-4xl font-semibold text-gray-900 sm:text-5xl">
@@ -98,18 +98,18 @@ const regularEvents = [
 
 			<!-- Upcoming Events -->
 			<section class="mb-12">
-				<h2 class="mb-5 text-xs font-semibold uppercase tracking-[0.2em] text-[#8a6a2a]">
+				<h2 class="mb-5 text-xs font-semibold uppercase tracking-[0.2em] text-[#6b4f1a]">
 					Upcoming Events
 				</h2>
 				<ul class="space-y-3">
 					{upcomingEvents.map((event) => (
-						<li class="flex items-stretch gap-0 overflow-hidden rounded-2xl border border-black/8 bg-white shadow-sm">
+						<li class="flex items-stretch overflow-hidden rounded-2xl border border-black/8 bg-white shadow-sm">
 							<!-- Date badge: fixed width, never stretches -->
-							<div class="flex w-16 shrink-0 flex-col items-center justify-center border-r border-black/8 bg-amber-50 py-4">
-								<span class="font-display text-2xl font-bold leading-none text-[#8a6a2a]">
+							<div class="flex w-16 shrink-0 flex-col items-center justify-center border-r border-black/8 bg-amber-50 py-5">
+								<span class="font-display text-2xl font-bold leading-none text-[#6b4f1a]">
 									{event.date.split(' ')[0]}
 								</span>
-								<span class="mt-1 text-[0.6rem] font-semibold uppercase tracking-wider text-[#8a6a2a]/70">
+								<span class="mt-1 text-[0.6rem] font-semibold uppercase tracking-wider text-[#6b4f1a]/70">
 									{event.date.split(' ')[1]}
 								</span>
 							</div>
